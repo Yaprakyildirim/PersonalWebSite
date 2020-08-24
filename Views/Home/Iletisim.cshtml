@@ -59,11 +59,11 @@
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label for="name">Adınız</label>
-                            <input type="text" name="Adi" required class="form-control ">
+                            <input type="text" id="Name" required class="form-control ">
                         </div>
                         <div class="col-md-6 form-group">
-                            <label for="soyadi">Soyadınız</label>
-                            <input type="text" name="Soyadi" required class="form-control ">
+                            <label for="Surname">Soyadınız</label>
+                            <input type="text" id="Surname" required class="form-control ">
                         </div>
                     </div>
                     <div class="row">
@@ -74,12 +74,12 @@
 
                     <div class="row">
                         <div class="col-md-6 form-group">
-                            <label for="email">Email</label>
-                            <input type="email" name="Email" required class="form-control ">
+                            <label for="Email">Email</label>
+                            <input type="email" id="Email" required class="form-control ">
                         </div>
                         <div class="col-md-6 form-group">
-                            <label for="phone">Telefon</label>
-                            <input type="text" name="Telefon" required class="form-control ">
+                            <label for="Phone">Telefon</label>
+                            <input type="text" id="Phone" required class="form-control ">
                         </div>
                     </div>
                     <div class="row">
@@ -90,20 +90,20 @@
 
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <label for="about">Konu</label>
-                            <input type="text" name="Konu" required class="form-control">
+                            <label for="About">Konu</label>
+                            <input type="text" id="About" required class="form-control">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <label for="message">Mesaj</label>
-                            <textarea name="Mesaj" required class="form-control " cols="30" rows="8"></textarea>
+                            <label for="Message">Mesaj</label>
+                            <textarea id="Message" required class="form-control " cols="30" rows="8"></textarea>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 form-group">
-                            <input type="submit" value="Gönder" class="btn btn-outline-black px-3 py-3">
+                            <button type="button" id="Send" class="btn btn-outline-black px-3 py-3">Gönder</button>
                         </div>
                     </div>
                 </form>
@@ -217,4 +217,52 @@
             $("#back").fadeOut(2000);
         }, 8000);
     </script>
+    <script>
+
+        /*function asd() {
+            var inputText = document.getElementById("Name");
+            alert(inputText.value);
+
+            var inputText1 = $('#Name').val();
+            alert(inputText1.value);
+
+
+            var inputText2 = $('#Surname').val();
+            alert(inputText2.value);
+
+            var inputText3 = $('#Email').val();
+            alert(inputText3.value);
+
+
+            var inputText4 = $('Phone').val();
+            alert(inputText4.value);
+
+            var inputText5 = $('About').val();
+            alert(inputText5.value);
+
+            var inputText6 = $('#Message').val();
+            alert(inputText6.value);
+            alert(inputText7);  */
+
+
+        $("#Send").click(function () {
+            var Informations = {};
+            Informations.Name = $('#Name').val();
+            Informations.Surname = $('#Surname').val();
+            Informations.Email = $('#Email').val();
+            Informations.Phone = $('#Phone').val();
+            Informations.About = $('#About').val();
+            Informations.Message = $('#Message').val();
+            $.ajax({
+                method: "GET",
+                url: "/Home/FormEvents",
+                data: { form: Informations }
+            }).done(function (d) {
+                alert("Tamamlandı");
+            }).fail(function () {
+                alert("Hata oluştu..");
+            });
+        });
+    </script>
 }
+

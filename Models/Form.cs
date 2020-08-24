@@ -1,29 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace MyWebSite.Models
 {
-    public class Mail
+    public class Form
     {
-        [Required]
+        public string veri { get; set; }
         public string Name { get; set; }
-
-        [Required]
-        public string Surname{ get; set; }
-
-        [Required]
+        public string Surname { get; set; }
         public string Email { get; set; }
-
-        [Required]
         public string Phone { get; set; }
-
-        [Required]
         public string About { get; set; }
-
-        [Required]
         public string Message { get; set; }
+
     }
 }
